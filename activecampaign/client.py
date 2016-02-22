@@ -14,7 +14,10 @@ class ActiveCampaignClient(object):
         """
         Requests are issued against an account specific domain
         """
-        self.host = host
+        if not host.startswith("http"):
+            self.host = "https://" + host
+        else:
+            self.host = host
         self.key = key
         self.contacts = Contacts(self)
 

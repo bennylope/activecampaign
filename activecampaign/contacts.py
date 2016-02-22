@@ -84,4 +84,4 @@ class Contacts(object):
         else:
             data.append(['email', email])
 
-        return self.client.request(POST, "contact_tag_remove", data)
+        return self.client.request(http.POST, "contact_tag_remove", data)

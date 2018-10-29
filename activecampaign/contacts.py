@@ -21,11 +21,12 @@ class Contacts(object):
         Returns:
             Dictionary of contact information
         """
-        return self.client.request(http.GET, "contact_view", [('id', id)])
+        return self.client.request(http.GET, "contact_view", [("id", id)])
 
     def sync(self, **kwargs):
-        if 'email' not in kwargs:
+        if "email" not in kwargs:
             raise ValueError("You must include the email field")
+
         return self.client.request(http.POST, "contact_sync", kwargs.items())
 
     def tag_add(self, *tags, **kwargs):
@@ -43,17 +44,17 @@ class Contacts(object):
         Returns:
 
         """
-        id = kwargs.pop('id', None)
-        email = kwargs.pop('email', None)
+        id = kwargs.pop("id", None)
+        email = kwargs.pop("email", None)
 
-        data = [('tags', tag) for tag in tags]
+        data = [("tags", tag) for tag in tags]
         if email is None and id is None:
             raise TypeError("Must provide `email` or `id` keyword argument")
 
         if id is not None:
-            data.append(['id', id])
+            data.append(["id", id])
         else:
-            data.append(['email', email])
+            data.append(["email", email])
 
         return self.client.request(http.POST, "contact_tag_add", data)
 
@@ -72,16 +73,16 @@ class Contacts(object):
         Returns:
 
         """
-        id = kwargs.pop('id', None)
-        email = kwargs.pop('email', None)
+        id = kwargs.pop("id", None)
+        email = kwargs.pop("email", None)
 
-        data = [('tags', tag) for tag in tags]
+        data = [("tags", tag) for tag in tags]
         if email is None and id is None:
             raise TypeError("Must provide `email` or `id` keyword argument")
 
         if id is not None:
-            data.append(['id', id])
+            data.append(["id", id])
         else:
-            data.append(['email', email])
+            data.append(["email", email])
 
         return self.client.request(http.POST, "contact_tag_remove", data)

@@ -34,12 +34,8 @@ class ActiveCampaignClient(object):
 
         """
         url = "{0}/admin/api.php".format(self.host)
-        params = [
-            ('api_action', action),
-            ('api_key', self.key),
-            ('api_output', 'json'),
-        ]
-        if method in ('GET', 'DELETE'):
+        params = [("api_action", action), ("api_key", self.key), ("api_output", "json")]
+        if method in ("GET", "DELETE"):
             if data is not None:
                 params += data
             data = []

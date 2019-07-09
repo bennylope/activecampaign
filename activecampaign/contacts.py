@@ -27,7 +27,7 @@ class Contacts(object):
         if "email" not in kwargs:
             raise ValueError("You must include the email field")
 
-        return self.client.request(http.POST, "contact_sync", kwargs.items())
+        return self.client.request(http.POST, "contact_sync", kwargs)
 
     def tag_add(self, *tags, **kwargs):
         """
